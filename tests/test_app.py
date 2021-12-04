@@ -7,12 +7,6 @@ app = create_app()
 client = app.test_client()
 
 
-def test_hello_world():
-    response = client.get('/')
-
-    assert b'Hello World' in response.data
-
-
 def test_todos():
     with app.app_context():
         g.db = Mock()
