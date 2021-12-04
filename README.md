@@ -39,6 +39,7 @@ docker run -p 5000:5000 -t todo-lists
 ```sh
 mkdir -p ~/data/db
 sudo mongod --dbpath ~/data/db
+docker-compose up
 ```
 
 ```
