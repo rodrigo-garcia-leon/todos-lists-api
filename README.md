@@ -15,13 +15,14 @@ Todo Lists API using Flask.
 ## Start
 
 ```sh
-flask run
+FLASK_APP=./src/app.py flask run
 ```
 
 ## Test
 
 ```sh
 curl http://127.0.0.1:5000/
+python -m pytest tests/
 ```
 
 ## Docker
