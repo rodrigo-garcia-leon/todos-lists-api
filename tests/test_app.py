@@ -14,7 +14,7 @@ def test_hello_world():
 
 
 class MockTodos:
-    def find(*args, **kwargs):
+    def find(self, *args, **kwargs):
         return [{
             "title": "test title",
             "description": "test description",
