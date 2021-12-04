@@ -1,4 +1,4 @@
-import pytest
+from unittest.mock import Mock
 from flask import g
 
 from app import create_app
@@ -13,23 +13,15 @@ def test_hello_world():
     assert b'Hello World' in response.data
 
 
-class MockTodos:
-    def find(self, *args, **kwargs):
-        return [{
+def test_todos():
+    with app.app_context():
+        g.db = Mock()
+        g.db.todos.find.return_value = [{
             "title": "test title",
             "description": "test description",
             "done": False
         }]
 
-
-class MockDb:
-    def __init__(self):
-        self.todos = MockTodos()
-
-
-def test_todos():
-    with app.app_context():
-        g.db = MockDb()
         response = client.get('/todos')
 
         assert [{
