@@ -23,3 +23,10 @@ flask run
 ```sh
 curl http://127.0.0.1:5000/
 ```
+
+## Docker
+
+```sh
+docker build -t todo-lists .
+docker run -p 5000:5000 -t todo-lists 
+```
