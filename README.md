@@ -5,6 +5,7 @@ Todo Lists API using Flask.
 ## Requirements
 
 - Python 3.10.0
+- MongoDB 5.0.4
 
 ## Setup
 
@@ -22,12 +23,32 @@ FLASK_APP=./src/app.py flask run
 
 ```sh
 curl http://127.0.0.1:5000/
-python -m pytest tests/
+curl http://127.0.0.1:5000/todos
+pytest
 ```
 
 ## Docker
 
 ```sh
 docker build -t todo-lists .
-docker run -p 5000:5000 -t todo-lists 
+docker run -p 5000:5000 -t todo-lists
+```
+
+## MongoDB
+
+```sh
+mkdir -p ~/data/db
+sudo mongod --dbpath ~/data/db
+```
+
+```
+use todo-lists
+
+db.todos.insertOne({
+    "title": "test title",
+    "description": "test description",
+    "done": false
+})
+
+db.todos.find()
 ```
