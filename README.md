@@ -22,8 +22,6 @@ FLASK_APP=./src/app.py flask run
 ## Test
 
 ```sh
-curl http://127.0.0.1:5000/
-curl http://127.0.0.1:5000/todos
 pytest
 pytest tests/acceptance.py
 ```
@@ -48,7 +46,6 @@ use todo-lists
 
 db.todos.insertOne({
     "title": "test title",
-    "description": "test description",
     "done": false
 })
 

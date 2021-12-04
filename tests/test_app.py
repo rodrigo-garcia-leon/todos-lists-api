@@ -12,7 +12,6 @@ def test_todos():
         g.db = Mock()
         g.db.todos.find.return_value = [{
             "title": "test title",
-            "description": "test description",
             "done": False
         }]
 
@@ -20,6 +19,5 @@ def test_todos():
 
         assert [{
             "title": "test title",
-            "description": "test description",
             "done": False
         }] == response.json
