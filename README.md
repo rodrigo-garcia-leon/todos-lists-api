@@ -45,7 +45,7 @@ docker-compose up
 use todo-lists
 
 db.todos.insertOne({
-    "title": "test title",
+    "title": "Buy milk",
     "done": false
 })
 
