@@ -1,12 +1,9 @@
 name: Main
-on:
-  push:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
   main:
-    name: main
+    name: Main
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repo
