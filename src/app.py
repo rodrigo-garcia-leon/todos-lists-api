@@ -1,4 +1,3 @@
-# pylint: disable=invalid-name
 """Todo Lists Flask API"""
 
 from flask import Flask, request
@@ -13,6 +12,7 @@ class Todos(Resource):
         """Constructor"""
         super().__init__()
 
+        # pylint: disable-next=invalid-name
         self.db = get_db()
 
     def get(self):

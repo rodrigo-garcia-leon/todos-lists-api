@@ -1,4 +1,3 @@
-# pylint: disable=assigning-non-slot
 """MongoDB database connection"""
 from os import environ
 from flask import g
@@ -11,6 +10,7 @@ def get_db():
     """Get database connection"""
     if "db" not in g:
         client = MongoClient(MONGO_URI)
+        # pylint: disable-next=assigning-non-slot
         g.db = client['todo-lists']
 
     return g.db
