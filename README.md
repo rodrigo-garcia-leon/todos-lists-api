@@ -1,4 +1,4 @@
-# todo-lists
+# todo-lists-api
 
 Todo Lists API using Flask.
 
