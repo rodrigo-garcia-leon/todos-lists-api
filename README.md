@@ -43,15 +43,10 @@ pytest test/acceptance.py
 ```sh
 docker build -t todo-lists .
 docker run -p 5000:5000 -t todo-lists
+docker-compose up
 ```
 
 ## MongoDB
-
-```sh
-mkdir -p ~/data/db
-sudo mongod --dbpath ~/data/db
-docker-compose up
-```
 
 ```
 use todo-lists
