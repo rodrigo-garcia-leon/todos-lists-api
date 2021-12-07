@@ -1,48 +1,50 @@
+"""Acceptance test for the API."""
 import requests
 
 
 def test_acceptance():
-    r = requests.get('http://localhost:5000/todos')
-    assert len(r.json()) == 0
-    assert r.status_code == 200
+    """Acceptance test for the API."""
+    response = requests.get('http://localhost:5000/todos')
+    assert len(response.json()) == 0
+    assert response.status_code == 200
 
-    r = requests.post('http://localhost:5000/todos',
-                      json={'title': 'Buy milk'})
-    assert r.json() == {
+    response = requests.post('http://localhost:5000/todos',
+                             json={'title': 'Buy milk'})
+    assert response.json() == {
         'title': 'Buy milk',
         'done': False,
     }
-    assert r.status_code == 201
+    assert response.status_code == 201
 
-    r = requests.get('http://localhost:5000/todos')
-    assert r.json() == [{
+    response = requests.get('http://localhost:5000/todos')
+    assert response.json() == [{
         'title': 'Buy milk',
         'done': False,
     }]
-    assert r.status_code == 200
+    assert response.status_code == 200
 
-    r = requests.patch('http://localhost:5000/todos',
-                       json={'title': 'Buy milk', 'done': True})
-    assert r.json() == {
+    response = requests.patch('http://localhost:5000/todos',
+                              json={'title': 'Buy milk', 'done': True})
+    assert response.json() == {
         'title': 'Buy milk',
         'done': True,
     }
-    assert r.status_code == 200
+    assert response.status_code == 200
 
-    r = requests.get('http://localhost:5000/todos')
-    assert r.json() == [{
+    response = requests.get('http://localhost:5000/todos')
+    assert response.json() == [{
         'title': 'Buy milk',
         'done': True,
     }]
-    assert r.status_code == 200
+    assert response.status_code == 200
 
-    r = requests.delete('http://localhost:5000/todos',
-                        json={'title': 'Buy milk'})
-    assert r.json() == {
+    response = requests.delete('http://localhost:5000/todos',
+                               json={'title': 'Buy milk'})
+    assert response.json() == {
         'title': 'Buy milk',
     }
-    assert r.status_code == 200
+    assert response.status_code == 200
 
-    r = requests.get('http://localhost:5000/todos')
-    assert len(r.json()) == 0
-    assert r.status_code == 200
+    response = requests.get('http://localhost:5000/todos')
+    assert len(response.json()) == 0
+    assert response.status_code == 200

@@ -19,6 +19,18 @@ Todo Lists API using Flask.
 FLASK_APP=./src/app.py flask run
 ```
 
+## Lint
+
+```
+pylint $(git ls-files '*.py')
+```
+
+## Format
+
+```
+autopep8 --in-place $(git ls-files '*.py')
+```
+
 ## Test
 
 ```sh

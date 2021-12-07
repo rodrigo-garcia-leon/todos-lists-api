@@ -1,3 +1,6 @@
+# pylint: disable=assigning-non-slot
+"""Test suite for Todo Lists Flask API."""
+
 from unittest.mock import Mock
 from flask import g
 
@@ -8,6 +11,7 @@ client = app.test_client()
 
 
 def test_get_todos():
+    """Test get todos."""
     with app.app_context():
         g.db = Mock()
         g.db.todos.find.return_value = [{
@@ -28,6 +32,7 @@ def test_get_todos():
 
 
 def test_post_todos():
+    """Test post todos."""
     with app.app_context():
         g.db = Mock()
 
@@ -47,6 +52,7 @@ def test_post_todos():
 
 
 def test_patch_todos():
+    """Test patch todos."""
     with app.app_context():
         g.db = Mock()
 
@@ -65,6 +71,7 @@ def test_patch_todos():
 
 
 def test_delete_todos():
+    """Test delete todos."""
     with app.app_context():
         g.db = Mock()
 
