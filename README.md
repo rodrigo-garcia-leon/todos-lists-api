@@ -2,6 +2,8 @@
 
 Todo Lists API using Flask.
 
+[![Main](https://github.com/rodrigo-garcia-leon/todo-lists-api/actions/workflows/main.yml/badge.svg)](https://github.com/rodrigo-garcia-leon/todo-lists-api/actions/workflows/main.yml)
+
 ## Requirements
 
 - Python 3.10.0
