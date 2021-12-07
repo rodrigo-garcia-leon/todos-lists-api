@@ -42,7 +42,6 @@ pytest test/acceptance.py
 
 ```sh
 docker build -t todo-lists .
-docker run -p 5000:5000 -t todo-lists
 docker-compose up
 ```
 
