@@ -23,7 +23,7 @@ FLASK_APP=./src/app.py flask run
 
 ```sh
 pytest
-pytest tests/acceptance.py
+pytest test/acceptance.py
 ```
 
 ## Docker
