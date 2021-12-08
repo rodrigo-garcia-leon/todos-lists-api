@@ -43,7 +43,7 @@ pytest test/acceptance.py
 ## Docker
 
 ```sh
-docker build -t todo-lists .
+docker build -t todo-lists-api .
 docker-compose up
 ```
 
