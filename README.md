@@ -1,8 +1,8 @@
-# todo-lists-api
+# todos-lists-api
 
 Todo Lists API using Flask.
 
-[![Main](https://github.com/rodrigo-garcia-leon/todo-lists-api/actions/workflows/main.yml/badge.svg)](https://github.com/rodrigo-garcia-leon/todo-lists-api/actions/workflows/main.yml)
+[![Main](https://github.com/rodrigo-garcia-leon/todos-lists-api/actions/workflows/main.yml/badge.svg)](https://github.com/rodrigo-garcia-leon/todos-lists-api/actions/workflows/main.yml)
 
 ## Requirements
 
@@ -43,7 +43,7 @@ pytest test/acceptance.py
 ## Docker
 
 ```sh
-docker build -t todo-lists-api .
+docker build -t todos-lists-api .
 docker-compose up
 ```
 

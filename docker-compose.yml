@@ -1,7 +1,7 @@
 version: "3.9"
 services:
-  todo-lists-api:
-    image: todo-lists-api
+  todos-lists-api:
+    image: todos-lists-api
     ports:
       - "5000:5000"
     links:
