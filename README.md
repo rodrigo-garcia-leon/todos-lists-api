@@ -70,12 +70,13 @@ db.todos.find()
 
 ## Todo
 
-- use gunicorn as production server
+- add pre-commit
 - add error handling
+- document using OpenAPI
+- use gunicorn as production server
+- add load testing
+- add lists
 - add authentication
 - add users
-- add lists
-- document using OpenAPI
-- add load testing
-- add production monitoring
 - add logging
+- add production monitoring
