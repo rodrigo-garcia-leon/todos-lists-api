@@ -18,20 +18,20 @@ class TodosDao:
         return todos
 
     @staticmethod
-    def create(todo):
+    def create(todo: TodosModel):
         """Create"""
         db = get_db()
         db.todos.insert_one(dict(todo.__dict__))
 
     @staticmethod
-    def update(todo):
+    def update(todo: TodosModel):
         """Update"""
         db = get_db()
         db.todos.update_one({"title": todo.title}, {
             "$set": {"done": todo.done}})
 
     @staticmethod
-    def delete(todo):
+    def delete(todo: TodosModel):
         """Delete"""
         db = get_db()
         db.todos.delete_one({"title": todo.title})
