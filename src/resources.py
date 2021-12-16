@@ -16,7 +16,7 @@ class TodosResource(Resource):
         """ Get todos"""
         todos = TodosDao.read()
 
-        return todos, 200
+        return todos
 
     @marshal_with(todos_fields)
     def post(self):
@@ -39,4 +39,4 @@ class TodosResource(Resource):
         todo = TodosModel(**request.get_json())
         TodosDao.delete(todo)
 
-        return '', 200
+        return '', 204

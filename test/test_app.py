@@ -82,5 +82,6 @@ def test_delete_todos():
         g.db.todos.delete_one.assert_called_once_with({
             "title": "Buy milk"})
 
-        assert response.status_code == 200
-        assert response.json == ""
+        assert response.status_code == 204
+        assert response.data == b''
+#
