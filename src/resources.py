@@ -1,3 +1,4 @@
+# pylint: disable=no-self-use
 """Resources"""
 
 from flask import request
