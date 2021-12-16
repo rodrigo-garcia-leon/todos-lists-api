@@ -1,5 +1,5 @@
 # pylint: disable=assigning-non-slot
-"""Test suite for Todo Lists Flask API."""
+"""Test suite for Todo Lists Flask API"""
 
 from unittest.mock import Mock
 from flask import g
@@ -83,6 +83,4 @@ def test_delete_todos():
             "title": "Buy milk"})
 
         assert response.status_code == 200
-        assert response.json == {
-            "title": "Buy milk",
-        }
+        assert response.json == ""

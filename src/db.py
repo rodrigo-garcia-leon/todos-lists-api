@@ -1,4 +1,5 @@
 """MongoDB database connection"""
+
 from os import environ
 from flask import g
 from pymongo import MongoClient

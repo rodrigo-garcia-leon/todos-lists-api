@@ -1,4 +1,5 @@
-"""Acceptance test for the API."""
+"""Acceptance test for the API"""
+
 import requests
 
 
@@ -40,9 +41,7 @@ def test_acceptance():
 
     response = requests.delete('http://localhost:5000/todos',
                                json={'title': 'Buy milk'})
-    assert response.json() == {
-        'title': 'Buy milk',
-    }
+    assert response.json() == ""
     assert response.status_code == 200
 
     response = requests.get('http://localhost:5000/todos')
