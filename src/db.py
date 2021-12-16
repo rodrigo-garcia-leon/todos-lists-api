@@ -12,6 +12,6 @@ def get_db():
     if "db" not in g:
         client = MongoClient(MONGO_URI)
         # pylint: disable-next=assigning-non-slot
-        g.db = client['todo-lists']
+        g.db = client['todos-lists']
 
     return g.db
