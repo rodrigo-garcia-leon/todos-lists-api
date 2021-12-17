@@ -48,6 +48,14 @@ def init_db():
                     'done': {
                         'bsonType': 'bool',
                         'description': 'must be a boolean and is required'
+                    },
+                    'comments': {
+                        'bsonType': 'array',
+                        'description': 'must be an array of strings if the field exists',
+                        'items': {
+                            'bsonType': 'string'
+                        },
+                        'uniqueItems': True
                     }
                 }
             }
