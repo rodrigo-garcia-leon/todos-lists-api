@@ -3,7 +3,7 @@ services:
   todos-lists-api:
     image: todos-lists-api
     ports:
-      - "5000:5000"
+      - "5100:5000"
     links:
       - mongodb
     environment:
