@@ -3,7 +3,7 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
 
-from db import get_db
+from db import get_db, init_app
 from resources import TodosResource
 
 
@@ -49,6 +49,7 @@ def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
     api = Api(app)
+    init_app(app)
 
     api.add_resource(TodosResource, '/todos')
 

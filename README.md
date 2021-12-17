@@ -57,15 +57,8 @@ docker-compose up
 
 ## MongoDB
 
-```js
-use todo-lists
-
-db.todos.insertOne({
-    "title": "Buy milk",
-    "done": false
-})
-
-db.todos.find()
+```sh
+FLASK_APP=./src/app.py flask init-db
 ```
 
 ## Todo
