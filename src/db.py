@@ -35,7 +35,7 @@ def init_db():
     if 'todos' in db.list_collection_names():
         db.command('drop', 'todos')
 
-    db.command('create', 'todos', {
+    db.command('create', 'todos', **{
         'validator': {
             '$jsonSchema': {
                 'bsonType': 'object',
