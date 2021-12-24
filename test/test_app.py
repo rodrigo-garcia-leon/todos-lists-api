@@ -1,9 +1,10 @@
 # pylint: disable=assigning-non-slot
-"""Test suite for Todo Lists Flask API."""
+"""Test suite for Todo Lists Flask API"""
 
 from unittest.mock import Mock
 from flask import g
 
+# pylint: disable-next=import-error
 from app import create_app
 
 app = create_app()
@@ -81,7 +82,6 @@ def test_delete_todos():
         g.db.todos.delete_one.assert_called_once_with({
             "title": "Buy milk"})
 
-        assert response.status_code == 200
-        assert response.json == {
-            "title": "Buy milk",
-        }
+        assert response.status_code == 204
+        assert response.data == b''
+#

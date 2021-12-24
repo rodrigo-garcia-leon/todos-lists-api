@@ -3,8 +3,8 @@
 
 from flask import Flask, request
 from flask_restful import Api, Resource
-from db import get_db
 
+<<<<<<< HEAD
 
 class Todos(Resource):
     """Todos Resource"""
@@ -50,6 +50,10 @@ class Todos(Resource):
         self.db.todos.delete_one(todo)
 
         return todo, 200
+=======
+from db import get_db, init_app
+from resources import TodosResource
+>>>>>>> 14c1270542427d15f96611cb85b7db3aec848a9a
 
 
 class Comments(Resource):
@@ -58,6 +62,7 @@ class Comments(Resource):
     def __init__(self):
         """Constructor"""
         super().__init__()
+        # pylint: disable-next=invalid-name
         self.db = get_db()
 
     def get(self):
@@ -93,7 +98,8 @@ def create_app():
     """Create and configure an instance of the Flask application."""
     app = Flask(__name__)
     api = Api(app)
+    init_app(app)
 
-    api.add_resource(Todos, '/todos')
+    api.add_resource(TodosResource, '/todos')
 
     return app
