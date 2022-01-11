@@ -1,8 +1,7 @@
 # pylint: disable=invalid-name
-"""Daos"""
 
 from db import get_db
-from models import TodosModel
+from models import TodosModel, CommentsModel
 
 
 class TodosDao:
@@ -35,3 +34,14 @@ class TodosDao:
         """Delete"""
         db = get_db()
         db.todos.delete_one({"title": todo.title})
+
+
+class CommentsDao:
+    """Comments Dao"""
+
+    @staticmethod
+    def create(comment: CommentsModel, todo: TodosModel):
+        """Create"""
+        db = get_db()
+        db.todos.update_one({"title": todo.title}, {
+            "$set": {"comments": comment.comment}})

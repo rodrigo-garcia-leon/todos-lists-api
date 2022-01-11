@@ -1,5 +1,5 @@
 # pylint: disable=assigning-non-slot
-"""Test suite for Todo Lists Flask API"""
+"""Test suite for Todo Lists Flask API."""
 
 from unittest.mock import Mock
 from flask import g
@@ -17,9 +17,10 @@ def test_get_todos():
         g.db = Mock()
         g.db.todos.find.return_value = [{
             "title": "Buy milk",
-            "done": False
+            "done": False,
+            "comments": {}
         }]
-
+        print(g.db)
         response = client.get('/todos')
         g.db.todos.find.assert_called_once_with({}, {
             "_id": False
@@ -28,7 +29,8 @@ def test_get_todos():
         assert response.status_code == 200
         assert response.json == [{
             "title": "Buy milk",
-            "done": False
+            "done": False,
+            "comments": {}
         }]
 
 
@@ -39,16 +41,19 @@ def test_post_todos():
 
         response = client.post('/todos', json={
             "title": "Buy milk",
+            "comments": {}
         })
         g.db.todos.insert_one.assert_called_once_with({
             "title": "Buy milk",
-            "done": False
+            "done": False,
+            "comments": {}
         })
 
         assert response.status_code == 201
         assert response.json == {
             "title": "Buy milk",
-            "done": False
+            "done": False,
+            "comments": {}
         }
 
 
@@ -82,6 +87,7 @@ def test_delete_todos():
         g.db.todos.delete_one.assert_called_once_with({
             "title": "Buy milk"})
 
-        assert response.status_code == 204
-        assert response.data == b''
-#
+        assert response.status_code == 200
+        assert response.json == {
+            "title": "Buy milk",
+        }
