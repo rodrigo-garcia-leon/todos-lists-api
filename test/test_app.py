@@ -18,13 +18,10 @@ def test_get_todos():
         g.db.todos.find.return_value = [{
             "title": "Buy milk",
             "done": False,
-            "comments": {}
+            "comments": {""}
         }]
-        print(g.db)
         response = client.get('/todos')
-        g.db.todos.find.assert_called_once_with({}, {
-            "_id": False
-        })
+        g.db.todos.find.assert_called_once_with({})
 
         assert response.status_code == 200
         assert response.json == [{

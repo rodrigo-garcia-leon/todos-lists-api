@@ -26,7 +26,7 @@ class TodosDao:
     def update(todo: TodosModel):
         """Update"""
         db = get_db()
-        db.todos.update_one({"title": todo.title}, {
+        db.todos.update_one({"_id": todo._id}, {
             "$set": {"done": todo.done}})
 
     @staticmethod

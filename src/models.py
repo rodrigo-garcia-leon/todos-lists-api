@@ -7,6 +7,7 @@ from bson import ObjectId
 
 
 todos_fields = {
+    '_id': ObjectId,
     'title': fields.String,
     'done': fields.Boolean,
     'comments': fields.List
@@ -24,6 +25,7 @@ class CommentsModel():
 
 @dataclass
 class TodosModel:
+    _id: ObjectId = ''
     title: str = ''
     done: bool = False
     comments: List[CommentsModel] = field(default_factory=list)
