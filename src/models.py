@@ -1,13 +1,11 @@
 """Models"""
 
 from dataclasses import dataclass, field
-from typing import List
 from flask_restful import fields
-from bson import ObjectId
 
 
 todos_fields = {
-    '_id': ObjectId,
+    'id': fields.String,
     'title': fields.String,
     'done': fields.Boolean,
     'comments': fields.List
@@ -25,7 +23,8 @@ class CommentsModel():
 
 @dataclass
 class TodosModel:
-    _id: ObjectId = ''
+    id: str = ''
     title: str = ''
     done: bool = False
-    comments: List[CommentsModel] = field(default_factory=list)
+    """ (!) : Pls review """
+    comments: list[CommentsModel] = field(default_factory=list)

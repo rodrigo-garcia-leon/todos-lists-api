@@ -20,13 +20,14 @@ class TodosDao:
     def create(todo: TodosModel):
         """Create"""
         db = get_db()
+        print(todo)
         db.todos.insert_one(dict(todo.__dict__))
 
     @staticmethod
     def update(todo: TodosModel):
         """Update"""
         db = get_db()
-        db.todos.update_one({"_id": todo._id}, {
+        db.todos.update_one({"_id": todo.id}, {
             "$set": {"done": todo.done}})
 
     @staticmethod
