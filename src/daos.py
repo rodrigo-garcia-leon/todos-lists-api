@@ -11,7 +11,7 @@ class TodosDao:
     def read():
         """Read"""
         db = get_db()
-        cursor = db.todos.find({}, {'_id': False})
+        cursor = db.todos.find({})
         todos = [TodosModel(**todo) for todo in cursor]
 
         return todos
@@ -36,12 +36,12 @@ class TodosDao:
         db.todos.delete_one({"title": todo.title})
 
 
-class CommentsDao:
-    """Comments Dao"""
+# class CommentsDao:
+#     """Comments Dao"""
 
-    @staticmethod
-    def create(comment: CommentsModel, todo: TodosModel):
-        """Create"""
-        db = get_db()
-        db.todos.update_one({"title": todo.title}, {
-            "$set": {"comments": comment.comment}})
+#     @staticmethod
+#     def create(comment: CommentsModel, todo: TodosModel):
+#         """Create"""
+#         db = get_db()
+#         db.todos.update_one({"title": todo.title}, {
+#             "$set": {"comments": comment.comment}})

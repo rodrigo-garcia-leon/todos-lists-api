@@ -4,8 +4,8 @@
 from flask import request
 from flask_restful import Resource, marshal_with
 
-from daos import TodosDao, CommentsDao
-from models import CommentsModel, TodosModel, todos_fields, comments_fields
+from daos import TodosDao
+from models import TodosModel, todos_fields
 
 
 class TodosResource(Resource):
@@ -15,7 +15,6 @@ class TodosResource(Resource):
     def get(self):
         """ Get todos"""
         todos = TodosDao.read()
-
         return todos
 
     @marshal_with(todos_fields)
@@ -40,22 +39,3 @@ class TodosResource(Resource):
         TodosDao.delete(todo)
 
         return '', 204
-
-
-class CommentsResource(Resource):
-    """Todos Resource"""
-
-    @marshal_with(comments_fields)
-    def get(self):
-        """ Get todos"""
-        comments = CommentsDao.read()
-
-        return comments
-
-    @marshal_with(comments_fields)
-    def post(self):
-        """Post todo"""
-        comment = CommentsModel(**request.get_json())
-        TodosDao.create(comment)
-
-        return comment, 201

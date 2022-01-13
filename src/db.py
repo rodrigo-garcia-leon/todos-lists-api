@@ -41,6 +41,10 @@ def init_db():
                 'bsonType': 'object',
                 'required': ['title', 'done'],
                 'properties': {
+                    '_id': {
+                        'bsonType': 'objectId',
+                        'description': 'must be a objectId if the field exists'
+                    },
                     'title': {
                         'bsonType': 'string',
                         'description': 'must be a string and is required'
