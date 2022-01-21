@@ -2,10 +2,11 @@
 
 from dataclasses import dataclass, field
 from flask_restful import fields
+from bson import ObjectId
 
 
 todos_fields = {
-    'id': fields.String,
+    '_id': fields.String,
     'title': fields.String,
     'done': fields.Boolean,
     'comments': fields.List
@@ -17,13 +18,13 @@ comment_fields = {
 
 
 @dataclass
-class CommentsModel():
+class CommentsModel:
     comment: str
 
 
 @dataclass
 class TodosModel:
-    id: str = ''
+    _id: ObjectId = ''
     title: str = ''
     done: bool = False
     """ (!) : Pls review """

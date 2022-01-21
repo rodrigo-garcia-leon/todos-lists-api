@@ -39,11 +39,15 @@ def init_db():
         'validator': {
             '$jsonSchema': {
                 'bsonType': 'object',
-                'required': ['title', 'done'],
+                'required': ['id', 'title', 'done'],
                 'properties': {
                     '_id': {
                         'bsonType': 'objectId',
-                        'description': 'must be a objectId if the field exists'
+                        'description': 'must be a ObjectId type and is not required'
+                    },
+                    'id': {
+                        'bsonType': 'string',
+                        'description': 'must be a string and is required'
                     },
                     'title': {
                         'bsonType': 'string',
