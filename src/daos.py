@@ -1,4 +1,5 @@
 # pylint: disable=invalid-name
+"""Daos"""
 
 from db import get_db
 from models import TodosModel
@@ -20,7 +21,7 @@ class TodosDao:
     def create(todo: TodosModel):
         """Create"""
         db = get_db()
-        db.todos.insert_one(dict(todo.__dict__))
+        db.todos.insert_one(todo.__dict__)
 
     @staticmethod
     def update(todo: TodosModel):

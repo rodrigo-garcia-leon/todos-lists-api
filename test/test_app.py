@@ -3,6 +3,7 @@
 
 from unittest.mock import Mock
 from flask import g
+from bson import ObjectId
 
 # pylint: disable-next=import-error
 from app import create_app
@@ -16,6 +17,7 @@ def test_get_todos():
     with app.app_context():
         g.db = Mock()
         g.db.todos.find.return_value = [{
+            "_id": ObjectId("012345678901234567890123"),
             "title": "Buy milk",
             "done": False,
             "comments": []
@@ -25,6 +27,7 @@ def test_get_todos():
 
         assert response.status_code == 200
         assert response.json == [{
+            "_id": "012345678901234567890123",
             "title": "Buy milk",
             "done": False,
             "comments": []
@@ -37,10 +40,11 @@ def test_post_todos():
         g.db = Mock()
 
         response = client.post('/todos', json={
+            "_id": "012345678901234567890123",
             "title": "Buy milk",
-            "comments": []
         })
         g.db.todos.insert_one.assert_called_once_with({
+            "_id": ObjectId("012345678901234567890123"),
             "title": "Buy milk",
             "done": False,
             "comments": []
@@ -48,6 +52,7 @@ def test_post_todos():
 
         assert response.status_code == 201
         assert response.json == {
+            "_id": "012345678901234567890123",
             "title": "Buy milk",
             "done": False,
             "comments": []
@@ -60,6 +65,7 @@ def test_patch_todos():
         g.db = Mock()
 
         response = client.patch('/todos', json={
+            "_id": "012345678901234567890123",
             "title": "Buy milk",
             "done": True,
             "comments": []
@@ -69,6 +75,7 @@ def test_patch_todos():
 
         assert response.status_code == 200
         assert response.json == {
+            "_id": "012345678901234567890123",
             "title": "Buy milk",
             "done": True,
             "comments": []
