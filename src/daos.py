@@ -17,15 +17,6 @@ class TodosDao:
         return todos
 
     @staticmethod
-    def read_by_id(id):
-        """Read by id"""
-        db = get_db()
-        cursor = db.todos.find({'_id': id})
-        todos = [TodosModel(**todo) for todo in cursor]
-
-        return todos
-
-    @staticmethod
     def create(todo: TodosModel):
         """Create"""
         db = get_db()
@@ -35,7 +26,7 @@ class TodosDao:
     def update(todo: TodosModel):
         """Update"""
         db = get_db()
-        db.todos.update_one({"_id": todo.id}, {
+        db.todos.update_one({"title": todo.title}, {
             "$set": {"done": todo.done}})
 
     @staticmethod

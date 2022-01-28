@@ -5,7 +5,7 @@ from flask import Flask
 from flask_restful import Api
 
 from db import init_app
-from resources import TodoByIdResource, TodosResource
+from resources import TodosResource
 
 
 def create_app():
@@ -15,6 +15,5 @@ def create_app():
     init_app(app)
 
     api.add_resource(TodosResource, '/todos')
-    api.add_resource(TodoByIdResource, '/todo/<id>')
 
     return app

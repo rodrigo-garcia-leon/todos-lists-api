@@ -18,7 +18,7 @@ def test_get_todos():
         g.db.todos.find.return_value = [{
             "title": "Buy milk",
             "done": False,
-            "comments": {""}
+            "comments": []
         }]
         response = client.get('/todos')
         g.db.todos.find.assert_called_once_with({})
@@ -27,7 +27,7 @@ def test_get_todos():
         assert response.json == [{
             "title": "Buy milk",
             "done": False,
-            "comments": {}
+            "comments": []
         }]
 
 
@@ -38,19 +38,19 @@ def test_post_todos():
 
         response = client.post('/todos', json={
             "title": "Buy milk",
-            "comments": {}
+            "comments": []
         })
         g.db.todos.insert_one.assert_called_once_with({
             "title": "Buy milk",
             "done": False,
-            "comments": {}
+            "comments": []
         })
 
         assert response.status_code == 201
         assert response.json == {
             "title": "Buy milk",
             "done": False,
-            "comments": {}
+            "comments": []
         }
 
 
@@ -61,7 +61,8 @@ def test_patch_todos():
 
         response = client.patch('/todos', json={
             "title": "Buy milk",
-            "done": True
+            "done": True,
+            "comments": []
         })
         g.db.todos.update_one.assert_called_once_with(
             {"title": 'Buy milk'}, {"$set": {"done": True}})
@@ -69,7 +70,8 @@ def test_patch_todos():
         assert response.status_code == 200
         assert response.json == {
             "title": "Buy milk",
-            "done": True
+            "done": True,
+            "comments": []
         }
 
 
@@ -84,7 +86,5 @@ def test_delete_todos():
         g.db.todos.delete_one.assert_called_once_with({
             "title": "Buy milk"})
 
-        assert response.status_code == 200
-        assert response.json == {
-            "title": "Buy milk",
-        }
+        assert response.status_code == 204
+        assert response.data == b''
