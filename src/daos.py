@@ -49,3 +49,20 @@ class TodosDao:
         todo = TodosModel(**cursor)
 
         return todo
+
+    @staticmethod
+    def update_by_id(id, todo: TodosModel):
+        """Read by id"""
+        db = get_db()
+        cursor = db.todos.update_one({'_id': ObjectId(id)}, {
+            "$set": {
+                "title": todo.title,
+                "done": todo.done,
+                "comments": todo.comments}})
+
+        if cursor is None:
+            return None
+
+        updated_todo = TodosModel(**cursor)
+
+        return updated_todo

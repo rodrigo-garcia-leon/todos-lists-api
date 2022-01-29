@@ -7,6 +7,7 @@ from bson import ObjectId
 
 # pylint: disable-next=import-error
 from app import create_app
+from models import TodosModel
 
 app = create_app()
 client = app.test_client()
@@ -117,4 +118,33 @@ def test_get_todo_by_id():
             "title": "Buy milk",
             "done": False,
             "comments": []
+        }
+
+
+def test_update_todo_by_id():
+    """Test put todo by id."""
+    with app.app_context():
+        g.db = Mock()
+        g.db.todos.update_one.return_value = {
+            '_id': ObjectId('012345678901234567890123'),
+            "title": "Buy milk 2",
+            "done": False,
+            "comments": ["comment"]
+        }
+        data = {
+            "title": "Buy milk 2",
+            "done": False,
+            "comments": ["comment"]
+        }
+        response = client.patch('/todo/012345678901234567890123', json=data)
+        g.db.todos.update_one.assert_called_once_with(
+            {'_id': ObjectId('012345678901234567890123')}, {
+                "$set": data})
+
+        assert response.status_code == 201
+        assert response.json == {
+            '_id': '012345678901234567890123',
+            "title": "Buy milk 2",
+            "done": False,
+            "comments": ["comment"]
         }

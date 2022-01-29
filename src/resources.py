@@ -45,6 +45,14 @@ class TodoByIdResource(Resource):
 
     @marshal_with(todos_fields)
     def get(self, id):
-        """ Get todos"""
+        """ Get todo by id"""
         todo = TodosDao.read_by_id(id)
-        return todo
+        return todo, 200
+
+    @marshal_with(todos_fields)
+    def patch(self, id):
+        """ Put todo by id"""
+        todo = TodosModel(**request.get_json())
+        TodosDao.update_by_id(id, todo)
+
+        return todo, 201
