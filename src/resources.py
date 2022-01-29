@@ -39,3 +39,12 @@ class TodosResource(Resource):
         TodosDao.delete(todo)
 
         return '', 204
+
+
+class TodoByIdResource(Resource):
+
+    @marshal_with(todos_fields)
+    def get(self, id):
+        """ Get todos"""
+        todo = TodosDao.read_by_id(id)
+        return todo

@@ -3,6 +3,7 @@
 
 from db import get_db
 from models import TodosModel
+from bson import ObjectId
 
 
 class TodosDao:
@@ -27,7 +28,7 @@ class TodosDao:
     def update(todo: TodosModel):
         """Update"""
         db = get_db()
-        db.todos.update_one({"title": todo.title}, {
+        db.todos.update_one({"_id": todo._id}, {
             "$set": {"done": todo.done}})
 
     @staticmethod
@@ -35,3 +36,16 @@ class TodosDao:
         """Delete"""
         db = get_db()
         db.todos.delete_one({"title": todo.title})
+
+    @staticmethod
+    def read_by_id(id):
+        """Read by id"""
+        db = get_db()
+        cursor = db.todos.find_one({'_id': ObjectId(id)})
+
+        if cursor is None:
+            return None
+
+        todo = TodosModel(**cursor)
+
+        return todo

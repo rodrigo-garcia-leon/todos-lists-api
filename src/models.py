@@ -16,7 +16,7 @@ todos_fields = {
 @dataclass
 class TodosModel:
     """Todos Model"""
-    _id: ObjectId = field(default=None)
+    _id: ObjectId = field(default_factory=ObjectId)
     title: str = ''
     done: bool = False
     comments: list[str] = field(default_factory=list)

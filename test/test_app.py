@@ -71,7 +71,7 @@ def test_patch_todos():
             "comments": []
         })
         g.db.todos.update_one.assert_called_once_with(
-            {"title": 'Buy milk'}, {"$set": {"done": True}})
+            {"_id": ObjectId('012345678901234567890123')}, {"$set": {"done": True}})
 
         assert response.status_code == 200
         assert response.json == {
@@ -95,3 +95,26 @@ def test_delete_todos():
 
         assert response.status_code == 204
         assert response.data == b''
+
+
+def test_get_todo_by_id():
+    """Test get todo by id."""
+    with app.app_context():
+        g.db = Mock()
+        g.db.todos.find_one.return_value = {
+            "_id": ObjectId("012345678901234567890123"),
+            "title": "Buy milk",
+            "done": False,
+            "comments": []
+        }
+        response = client.get('/todo/012345678901234567890123')
+        g.db.todos.find_one.assert_called_once_with(
+            {'_id': ObjectId('012345678901234567890123')})
+
+        assert response.status_code == 200
+        assert response.json == {
+            "_id": "012345678901234567890123",
+            "title": "Buy milk",
+            "done": False,
+            "comments": []
+        }
