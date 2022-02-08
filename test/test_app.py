@@ -130,15 +130,19 @@ def test_update_todo_by_id():
             "done": False,
             "comments": ["comment"]
         }
-        data = {
+        response = client.patch('/todo/012345678901234567890123', json={
+            '_id': '012345678901234567890123',
             "title": "Buy milk 2",
             "done": False,
             "comments": ["comment"]
-        }
-        response = client.patch('/todo/012345678901234567890123', json=data)
+        })
         g.db.todos.update_one.assert_called_once_with(
             {'_id': ObjectId('012345678901234567890123')}, {
-                "$set": data})
+                "$set": {
+                    "title": "Buy milk 2",
+                    "done": False,
+                    "comments": ["comment"]
+                }})
 
         assert response.status_code == 201
         assert response.json == {
