@@ -3,8 +3,8 @@
 from flask import Flask, request
 from flask_restful import Api, Resource
 
-from db import get_db, init_app
-from resources import TodosResource
+from .db import get_db, init_app
+from .resources import TodosResource
 
 
 class Comments(Resource):

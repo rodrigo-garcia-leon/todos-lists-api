@@ -6,27 +6,30 @@ Todos Lists API using Flask and PyMongo.
 
 ## Requirements
 
-- Python 3.10.0
+- Python 3.10.2
 - MongoDB 5.0.4
 - Docker 20.10.11
 
 ## Setup
 
 ```sh
-# Create virtual environment
-python3 -m venv venv
+# create virtual environment
+python -m venv .venv
 
-# Activate virtual environment
+# activate virtual environment
 source .venv/bin/activate
 
-# Install dependencies
+# install dependencies
 pip install -r requirements.txt
+
+# install editable package
+pip install -e .
 ```
 
 ## Start
 
 ```sh
-FLASK_APP=./src/app.py flask run
+FLASK_APP=./src/todos_lists_api/app.py flask run
 ```
 
 ## Lint
@@ -44,8 +47,8 @@ autopep8 --in-place $(git ls-files '*.py')
 ## Test
 
 ```sh
-pytest
-pytest test/acceptance.py
+python -m pytest
+python -m pytest tests/acceptance.py
 ```
 
 ## Docker
@@ -58,7 +61,7 @@ docker-compose up
 ## MongoDB
 
 ```sh
-FLASK_APP=./src/app.py flask init-db
+FLASK_APP=./src/todos_lists_api/app.py flask init-db
 ```
 
 ## Todo

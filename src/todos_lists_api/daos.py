@@ -1,8 +1,8 @@
 # pylint: disable=invalid-name
 """Daos"""
 
-from db import get_db
-from models import TodosModel
+from .db import get_db
+from .models import TodosModel
 
 
 class TodosDao:

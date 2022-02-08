@@ -4,8 +4,8 @@
 from flask import request
 from flask_restful import Resource, marshal_with
 
-from daos import TodosDao
-from models import TodosModel, todos_fields
+from .daos import TodosDao
+from .models import TodosModel, todos_fields
 
 
 class TodosResource(Resource):

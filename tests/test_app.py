@@ -4,8 +4,7 @@
 from unittest.mock import Mock
 from flask import g
 
-# pylint: disable-next=import-error
-from app import create_app
+from todos_lists_api.app import create_app
 
 app = create_app()
 client = app.test_client()
