@@ -126,7 +126,6 @@ def test_update_todo_by_id():
     with app.app_context():
         g.db = Mock()
         g.db.todos.update_one.return_value = {
-            '_id': ObjectId('012345678901234567890123'),
             "title": "Buy milk 2",
             "done": False,
             "comments": ["comment"]
