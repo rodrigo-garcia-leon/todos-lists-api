@@ -2,6 +2,7 @@
 """Test suite for Todo Lists Flask API"""
 
 from unittest.mock import Mock
+from wsgiref import headers
 from flask import g
 
 from todos_lists_api.app import create_app
@@ -19,7 +20,9 @@ def test_get_todos():
             "done": False
         }]
 
-        response = client.get('/todos')
+        response = client.get('/todos', headers={
+            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NDU0Njk2NDUsImlzcyI6InRlc3QifQ.uFgZauLj6DAGxdpEK9HfHicSUMAHgu0b4M6bRfY_8-8'
+        })
         g.db.todos.find.assert_called_once_with({}, {
             "_id": False
         })

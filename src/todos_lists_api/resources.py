@@ -6,10 +6,13 @@ from flask_restful import Resource, marshal_with
 
 from .daos import TodosDao
 from .models import TodosModel, todos_fields
+from .auth import token_required
 
 
 class TodosResource(Resource):
     """Todos Resource"""
+
+    method_decorators = [token_required]
 
     @marshal_with(todos_fields)
     def get(self):
