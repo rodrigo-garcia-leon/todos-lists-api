@@ -7,5 +7,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ./src ./src
 
-ENV FLASK_APP="./src/app.py"
+ENV FLASK_APP="./src/todos_lists_api/app.py"
 CMD [ "flask", "run", "--host=0.0.0.0" ]
